@@ -4,7 +4,7 @@ import { text, integer, sqliteTable } from "drizzle-orm/sqlite-core";
 export const teams = sqliteTable('teams', {
     id: integer('id').primaryKey(),
     name: text('name').notNull().unique(),
-    company: text('company').notNull(),
+    company: text('company'),
     start_time: text('start_time'),
     end_time: text('end_time'),
     score: integer('score').notNull().default(0),
