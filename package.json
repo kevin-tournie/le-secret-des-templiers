@@ -11,9 +11,11 @@
     "migrate": "bun run server/database/migrate.ts"
   },
   "dependencies": {
+    "@nuxt/content": "^2.13.2",
     "@nuxt/ui": "^2.17.0",
     "drizzle-orm": "^0.31.2",
-    "nuxt": "^3.12.3",
+    "nuxt": "^3.12.4",
+    "nuxt-auth-utils": "^0.3.2",
     "vue": "latest",
     "zod": "^3.23.8"
   },
