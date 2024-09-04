@@ -3,5 +3,9 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   compatibilityDate: "2024-07-04",
   modules: ["@nuxt/ui", "nuxt-auth-utils", "@nuxt/content"],
+  routeRules: {
+    "/": {
+      redirect: "/accueil",
+    },
+  },
 });
-
