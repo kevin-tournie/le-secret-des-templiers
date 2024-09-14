@@ -2,6 +2,7 @@ import { eq, and } from "drizzle-orm";
 import { createTeamSchema } from "~/composables/useCreateTeam";
 import { db } from "../database/db";
 import { teams } from "../database/schema";
+import logger from "../libs/pino";
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event);
@@ -21,7 +22,6 @@ export default defineEventHandler(async (event) => {
     .from(teams)
     .where(and(eq(teams.name, result.data.teamName)));
 
-  // Si l'équipe n'existe pas, on la créée
   if (potentialTeam.length === 0) {
     await db.insert(teams).values({
       name: result.data.teamName,
@@ -29,6 +29,9 @@ export default defineEventHandler(async (event) => {
       score: 0,
       malus_points: 0,
     });
+    logger.info(`Team "${result.data.teamName}" has been created successfully`);
+  } else {
+    logger.info(`Team ${potentialTeam[0].name} already exists`);
   }
 
   await setUserSession(event, {

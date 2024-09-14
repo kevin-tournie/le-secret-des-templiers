@@ -7,8 +7,7 @@ Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introdu
 Make sure to install the dependencies:
 
 ```bash
-# bun
-bun install
+npm install
 ```
 
 ## Development Server
@@ -16,8 +15,7 @@ bun install
 Start the development server on `http://localhost:3000`:
 
 ```bash
-# bun
-bun run dev
+npm run dev
 ```
 
 ## Production
@@ -25,15 +23,19 @@ bun run dev
 Build the application for production:
 
 ```bash
-# bun
-bun run build
+npm run build
 ```
 
 Locally preview production build:
 
 ```bash
-# bun
-bun run preview
+npm run preview
+```
+
+To run the production bundle:
+
+```bash
+LOG_LEVEL="error" ENV="production"
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
@@ -44,11 +46,11 @@ This project uses SQLite as database engine.
 To generate the migrations, run :
 
 ```bash
-bunx drizzle-kit generate
+npx drizzle-kit generate
 ```
 
 Then, to run the migrations :
 
 ```bash
-bun src/migrate.ts
+node src/migrate.ts
 ```
