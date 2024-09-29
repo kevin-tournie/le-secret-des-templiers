@@ -13,7 +13,7 @@ async function onSubmit(event: FormSubmitEvent<CreateTeamForm>) {
     teamName: event.data.teamName,
     companyName: event.data.companyName,
   });
-  router.push("/qcm");
+  await router.push("/qcm");
 }
 </script>
 

@@ -1,0 +1,55 @@
+{
+  "body": [
+    {
+      "templier": "Charles Legendes",
+      "indices": [
+        {
+          "id": 1,
+          "value": "Regarder les objets sous tous les angles"
+        },
+        {
+          "id": 2,
+          "value": "Utiliser l'intelligence artificielle pour résoudre les énigmes"
+        },
+        {
+          "id": 3,
+          "value": "Chercher des indices au-dessus de 1m80"
+        }
+      ]
+    },
+    {
+      "templier": "blabla",
+      "indices": [
+        {
+          "id": 1,
+          "value": "Regarder les objets sous tous les angles"
+        },
+        {
+          "id": 2,
+          "value": "Utiliser l'intelligence artificielle pour résoudre les énigmes"
+        },
+        {
+          "id": 3,
+          "value": "Chercher des indices au-dessus de 1m80"
+        }
+      ]
+    },
+    {
+      "templier": "blibli",
+      "indices": [
+        {
+          "id": 1,
+          "value": "Regarder les objets sous tous les angles"
+        },
+        {
+          "id": 2,
+          "value": "Utiliser l'intelligence artificielle pour résoudre les énigmes"
+        },
+        {
+          "id": 3,
+          "value": "Chercher des indices au-dessus de 1m80"
+        }
+      ]
+    }
+  ]
+}
