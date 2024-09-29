@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import QuestionBlock from "@/components/question-block.vue";
 import type { Question } from "~/components/types/qcm";
 import type { FormSubmitEvent } from "#ui/types";
-import { type QcmResponsesForm, qcmResponses } from "~/composables/useQCMResponses";
+import { type QcmResponsesForm } from "~/composables/useQCMResponses";
 
 const jsonQuestions = await queryContent('/qcm').findOne();
 const questions = jsonQuestions.body as unknown as Question[];
@@ -10,33 +9,48 @@ const questions = jsonQuestions.body as unknown as Question[];
 definePageMeta({
   middleware: 'auth'
 })
+const router = useRouter();
 
-const state = reactive({
-  response1: 0,
-  response2: 0,
-  response3: 0
-});
+const userAnswer = ref(0);
+const showAnswers = ref(false);
+const questionNumber = ref(0);
+const question = computed(() => questions[questionNumber.value]);
 
 const onSubmit = (event: FormSubmitEvent<QcmResponsesForm>) => {
-  console.log(event.data);
-  navigateTo({
-    path: "/qcm-responses",
-    query: {
-      responses: JSON.stringify(state)
-    }
-  })
+  event.preventDefault();
+  console.log(showAnswers.value, questionNumber.value)
+  if (showAnswers.value && questionNumber.value === 3) {
+    router.push("/video")
+  }
+
+  if (showAnswers.value) {
+    showAnswers.value = false;
+    questionNumber.value += 1;
+  } else {
+    showAnswers.value = true;
+  }
+}
+
+const toggle = (buttonId: number) => {
+  showAnswers.value = false;
+  userAnswer.value = buttonId;
 }
 </script>
 
 <template>
   <div class="flex justify-center items-center min-h-screen bg-gray-100">
-    <UForm :schema="qcmResponses" class="flex flex-col mb-4 gap-5" :state="state" @submit="onSubmit">
-      <div v-for="question in questions">
-        <QuestionBlock :question="question" :state="state" />
+    <div class="flex flex-col mb-4 gap-5">
+      {{ question.question }}
+      <div v-for="answer in question.answers" size="sm">
+        <UButton :variant="userAnswer === answer.id ? 'solid' : 'outline'" @click="toggle(answer.id)" :id="answer.id"
+          class="mb-2 w-full border-gray-300 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 rounded-md shadow-sm">
+          {{ answer.value }}
+        </UButton>
+        {{ showAnswers && (userAnswer === answer.id || answer.isCorrect) ? answer.indication : "" }}
       </div>
-      <UButton type="submit" class="w-full text-white font-bold py-2 px-4 rounded text-center">
-        Valider
+      <UButton @click="onSubmit" class="w-full text-white font-bold py-2 px-4 rounded text-center">
+        {{ showAnswers === true ? "Suivant" : "Valider" }}
       </UButton>
-    </UForm>
+    </div>
   </div>
 </template>

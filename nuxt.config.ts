@@ -8,4 +8,5 @@ export default defineNuxtConfig({
       redirect: "/accueil",
     },
   },
+  ssr: true,
 });

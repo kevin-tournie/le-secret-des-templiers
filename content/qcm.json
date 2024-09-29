@@ -71,6 +71,30 @@
           "isCorrect": false
         }
       ]
+    },
+    {
+      "id": 4,
+      "question": "Si j'ai besoin d'un indice",
+      "answers": [
+        {
+          "id": 1,
+          "value": "Je rentre le prénom inscrit sur le dernier indiceque j'ai reçu",
+          "indication": "Oui, tous les Templiers sont mobilisés pour vous aider. Regardez bien vos indices",
+          "isCorrect": true
+        },
+        {
+          "id": 2,
+          "value": "Je prie et espère que les Templiers m'enverront un signe",
+          "indication": "Non, les Templiers de l'au-delà sont en retraite spirituelle",
+          "isCorrect": false
+        },
+        {
+          "id": 3,
+          "value": "J'appelle un ami",
+          "indication": "À moins que votre ami soit Templier, il y a peu de chance que cela vous soit utile",
+          "isCorrect": false
+        }
+      ]
     }
   ]
 }
