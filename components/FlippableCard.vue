@@ -3,7 +3,7 @@
     <div class="card-inner" :class="{ flipped: isFlipped }">
       <div class="card-front">Indice {{ indice.id }}</div>
       <div class="card-back">
-        {{ indice.text }}
+        {{ indice.value }}
       </div>
     </div>
   </div>
@@ -16,11 +16,21 @@ import type { Indice } from "~/components/types/enigme";
 const props = defineProps<{ indice: Indice; canFlip: boolean }>();
 const isFlipped = ref(false);
 
-const flipCard = () => {
+const flipCard = async () => {
   if (props.canFlip && !isFlipped.value) {
     isFlipped.value = true;
     props.indice.flipped = true;
   }
+
+  console.log("flipping", props.indice.id);
+
+  // sauvegarder dans le back le malus
+  await $fetch("/api/indice", {
+    method: "POST",
+    body: {
+      malus: props.indice.id,
+    },
+  });
 };
 
 watch(isFlipped, (newVal) => {

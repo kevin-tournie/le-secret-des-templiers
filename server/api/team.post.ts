@@ -6,9 +6,8 @@ import logger from "../libs/pino";
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event);
-  const payload = JSON.parse(body);
-
-  const result = createTeamSchema.safeParse(payload);
+  
+  const result = createTeamSchema.safeParse(body);
 
   if (!result.success) {
     return {

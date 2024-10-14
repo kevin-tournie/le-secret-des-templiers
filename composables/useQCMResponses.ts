@@ -1,7 +1,5 @@
 import { z } from "zod";
 
-export async function blabla(qcmResponsesForm: QcmResponsesForm) {}
-
 export const qcmResponses = z.object({
   response1: z.number(),
   response2: z.number(),

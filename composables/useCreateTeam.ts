@@ -1,12 +1,12 @@
 import { z } from "zod";
 
 export async function useCreateTeam(createTeamForm: CreateTeamForm) {
-  const response = await fetch("/api/team", {
+  const response = await $fetch("/api/team", {
     method: "POST",
     body: JSON.stringify(createTeamForm),
   });
 
-  return response.json();
+  return response;
 }
 
 export const createTeamSchema = z.object({

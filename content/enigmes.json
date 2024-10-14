@@ -21,15 +21,15 @@
       "templier": "blabla",
       "indices": [
         {
-          "id": 1,
+          "id": 4,
           "value": "Regarder les objets sous tous les angles"
         },
         {
-          "id": 2,
+          "id": 5,
           "value": "Utiliser l'intelligence artificielle pour résoudre les énigmes"
         },
         {
-          "id": 3,
+          "id": 6,
           "value": "Chercher des indices au-dessus de 1m80"
         }
       ]
@@ -38,15 +38,15 @@
       "templier": "blibli",
       "indices": [
         {
-          "id": 1,
+          "id": 7,
           "value": "Regarder les objets sous tous les angles"
         },
         {
-          "id": 2,
+          "id": 8,
           "value": "Utiliser l'intelligence artificielle pour résoudre les énigmes"
         },
         {
-          "id": 3,
+          "id": 9,
           "value": "Chercher des indices au-dessus de 1m80"
         }
       ]
