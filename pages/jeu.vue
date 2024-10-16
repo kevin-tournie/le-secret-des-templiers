@@ -27,7 +27,8 @@
         />
       </svg>
       <div class="time-display">{{ formattedTime }}</div>
-      <NuxtLink to="/indice-question">Logo</NuxtLink>
+      <NuxtLink to="/indice-question">Indice</NuxtLink>
+      <NuxtLink to="/fin">Fin de la partie</NuxtLink>
     </div>
   </Layout>
 </template>

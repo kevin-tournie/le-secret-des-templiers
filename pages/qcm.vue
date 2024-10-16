@@ -1,41 +1,3 @@
-<script setup lang="ts">
-import type { Question } from "~/components/types/qcm";
-import type { FormSubmitEvent } from "#ui/types";
-import { type QcmResponsesForm } from "~/composables/useQCMResponses";
-
-const jsonQuestions = await queryContent("/qcm").findOne();
-const questions = jsonQuestions.body as unknown as Question[];
-
-definePageMeta({
-  middleware: "auth",
-});
-
-const userAnswer = ref(0);
-const showAnswers = ref(false);
-const questionNumber = ref(0);
-const question = computed(() => questions[questionNumber.value]);
-
-const onSubmit = (event: FormSubmitEvent<QcmResponsesForm>) => {
-  event.preventDefault();
-  console.log(showAnswers.value, questionNumber.value);
-  if (showAnswers.value && questionNumber.value === 3) {
-    navigateTo("/video");
-  }
-
-  if (showAnswers.value) {
-    showAnswers.value = false;
-    questionNumber.value += 1;
-  } else {
-    showAnswers.value = true;
-  }
-};
-
-const toggle = (buttonId: number) => {
-  showAnswers.value = false;
-  userAnswer.value = buttonId;
-};
-</script>
-
 <template>
   <div class="flex justify-center items-center min-h-screen bg-gray-100">
     <div class="flex flex-col mb-4 gap-5">
@@ -64,3 +26,41 @@ const toggle = (buttonId: number) => {
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import type { Question } from "~/components/types/qcm";
+import type { FormSubmitEvent } from "#ui/types";
+import type { QcmResponsesForm } from "~/composables/useQCMResponses";
+
+definePageMeta({
+  middleware: "auth",
+});
+
+const jsonQuestions = await queryContent("/qcm").findOne();
+const questions = jsonQuestions.body as unknown as Question[];
+
+const userAnswer = ref(0);
+const showAnswers = ref(false);
+const questionNumber = ref(0);
+const question = computed(() => questions[questionNumber.value]);
+
+async function onSubmit(event: FormSubmitEvent<QcmResponsesForm>) {
+  event.preventDefault();
+
+  if (showAnswers.value && questionNumber.value === 3) {
+    await navigateTo("/video");
+  }
+
+  if (showAnswers.value) {
+    showAnswers.value = false;
+    questionNumber.value += 1;
+  } else {
+    showAnswers.value = true;
+  }
+}
+
+function toggle(buttonId: number) {
+  showAnswers.value = false;
+  userAnswer.value = buttonId;
+}
+</script>

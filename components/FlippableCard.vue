@@ -14,24 +14,25 @@ import { ref, watch } from "vue";
 import type { Indice } from "~/components/types/enigme";
 
 const props = defineProps<{ indice: Indice; canFlip: boolean }>();
-const isFlipped = ref(false);
+const isFlipped = ref(props.indice.flipped);
 
-const flipCard = async () => {
+async function flipCard() {
   if (props.canFlip && !isFlipped.value) {
     isFlipped.value = true;
     props.indice.flipped = true;
+
+    saveMalus(props.indice.id);
   }
+}
 
-  console.log("flipping", props.indice.id);
+async function saveMalus(indiceId: number) {
+  const malusString = localStorage.getItem("malus");
+  const currentMalus = malusString === null ? {} : JSON.parse(malusString);
 
-  // sauvegarder dans le back le malus
-  await $fetch("/api/indice", {
-    method: "POST",
-    body: {
-      malus: props.indice.id,
-    },
-  });
-};
+  currentMalus[indiceId] = true;
+
+  localStorage.setItem("malus", JSON.stringify(currentMalus));
+}
 
 watch(isFlipped, (newVal) => {
   if (newVal) {
@@ -40,10 +41,10 @@ watch(isFlipped, (newVal) => {
 });
 </script>
 
-<style scoped>
+<style scoped lang="css">
 .card {
   width: 200px;
-  height: 300px;
+  height: 250px;
   perspective: 1000px;
   cursor: pointer;
   margin-bottom: 20px;

@@ -24,8 +24,8 @@ definePageMeta({
 
 const templierName = ref("");
 
-function handleClick() {
-  navigateTo({
+async function handleClick() {
+  await navigateTo({
     name: "enigmes",
     query: { templier: templierName.value },
   });

@@ -1,19 +1,32 @@
 <template>
   <div>Fin de partie</div>
-  <UButton @click="handleClick">Tableau des scores</UButton>
+  <UButton @click="navigateTo('/accueil')">Tableau des scores</UButton>
 </template>
 
 <script setup lang="ts">
+import { timer } from "~/store/timer";
+
 const { clear } = useUserSession();
 
 definePageMeta({
   middleware: "auth",
 });
 
-async function handleClick() {
-  clear();
+onMounted(async () => {
+  const malus = localStorage.getItem("malus");
+
+  await $fetch("/api/end", {
+    method: "POST",
+    body: {
+      timer: timer.value,
+      malus: malus !== null ? JSON.parse(malus) : 0,
+    },
+  });
+
   localStorage.removeItem("countdownStartTime");
   localStorage.removeItem("countdownTotalTime");
-  await navigateTo("/accueil");
-}
+  localStorage.removeItem("malus");
+
+  clear();
+});
 </script>

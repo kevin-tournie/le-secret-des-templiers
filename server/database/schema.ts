@@ -5,8 +5,7 @@ export const teams = sqliteTable("teams", {
   id: integer("id").primaryKey(),
   name: text("name").notNull().unique(),
   company: text("company"),
-  start_time: text("start_time"),
-  end_time: text("end_time"),
+  time: integer("time"),
   score: integer("score").notNull().default(0),
   malus_points: integer("malus_points").notNull().default(0),
 

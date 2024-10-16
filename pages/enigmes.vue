@@ -34,17 +34,39 @@ onMounted(async () => {
   );
 
   if (enigme) {
+    // récupérer dans le localStorage les valeurs pour chaque indice
+    const malus = localStorage.getItem("malus");
+
     indices.value = enigme.indices.map((indice) => ({
       ...indice,
-      flipped: false,
+      flipped: isCardFlipped(malus, indice.id),
     }));
   } else {
-    navigateTo("/jeu");
+    await navigateTo("/jeu");
   }
 });
 
-const canFlip = (index: number) => {
+function isCardFlipped(malus: string | null, id: number) {
+  if (malus === null) {
+    return false;
+  }
+  const jsonMalus = JSON.parse(malus);
+  console.log(jsonMalus);
+  return jsonMalus[id] ?? false;
+}
+
+function canFlip(index: number) {
   if (index === 0) return true;
   return indices.value[index - 1].flipped;
-};
+}
 </script>
+
+<style scoped lang="css">
+.indices-container {
+  max-height: 90dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+</style>

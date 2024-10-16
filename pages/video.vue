@@ -3,12 +3,12 @@
     class="flex justify-center items-center flex-col min-h-screen bg-gray-100"
   >
     <iframe
-      width="560"
-      height="315"
+      width="350"
+      height="200"
       src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=4ZrTrDPc13f1uzd1"
       title="YouTube video player"
       frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
       referrerpolicy="strict-origin-when-cross-origin"
       allowfullscreen
     ></iframe>

@@ -2,7 +2,6 @@
   <div class="flex justify-center items-center min-h-screen bg-gray-100">
     <div class="bg-white shadow-lg rounded-lg p-6 w-full max-w-md">
       <h1 class="text-xl font-bold mb-4 text-center">
-        <!-- Adjusted width here -->
         Le secret des Templiers
       </h1>
       <UForm
@@ -31,7 +30,7 @@
         <UButton
           type="submit"
           class="w-full text-white font-bold py-2 px-4 rounded text-center"
-          >Créer une équipe
+          >Jouer
         </UButton>
       </UForm>
     </div>
@@ -55,7 +54,7 @@ async function onSubmit(event: FormSubmitEvent<CreateTeamForm>) {
     companyName: event.data.companyName,
   });
 
-  await fetch();
+  await fetch(); // permet de récupérer le cookie de session !!
 
   await navigateTo("/qcm");
 }

@@ -52,5 +52,5 @@ npx drizzle-kit generate
 Then, to run the migrations :
 
 ```bash
-node src/migrate.ts
+npx tsx server/database/migrate.ts
 ```
