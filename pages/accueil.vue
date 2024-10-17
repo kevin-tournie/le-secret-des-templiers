@@ -49,6 +49,7 @@ const state = reactive({
 });
 
 async function onSubmit(event: FormSubmitEvent<CreateTeamForm>) {
+  console.log("coucou");
   await useCreateTeam({
     teamName: event.data.teamName,
     companyName: event.data.companyName,

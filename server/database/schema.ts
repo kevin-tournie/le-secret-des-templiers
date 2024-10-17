@@ -1,8 +1,8 @@
 import { sql, type InferSelectModel } from "drizzle-orm";
-import { integer, pgTable, text } from "drizzle-orm/pg-core";
+import { integer, pgTable, serial, text } from "drizzle-orm/pg-core";
 
 export const teams = pgTable('teams', {
-  id: integer("id").primaryKey(),
+  id: serial("id").primaryKey(),
   name: text("name").notNull().unique(),
   company: text("company"),
   time: integer("time"),
