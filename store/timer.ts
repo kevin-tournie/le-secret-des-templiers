@@ -1,4 +1,6 @@
-export const timer = ref<number>(3600);
+export const maxTimer = 10800;
+
+export const timer = ref<number>(maxTimer);
 
 export const formattedTime = computed(() => {
     const hours = Math.floor(timer.value / 3600)

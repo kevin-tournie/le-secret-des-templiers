@@ -1,7 +1,9 @@
 <template>
   <div class="card" @click="flipCard">
     <div class="card-inner" :class="{ flipped: isFlipped }">
-      <div class="card-front">Indice {{ indice.id }}</div>
+      <div class="card-front">
+        {{ indice.id % 3 === 0 ? "Solution" : `Indice ${indice.id}` }}
+      </div>
       <div class="card-back">
         {{ indice.value }}
       </div>
@@ -13,7 +15,11 @@
 import { ref, watch } from "vue";
 import type { Indice } from "~/components/types/enigme";
 
-const props = defineProps<{ indice: Indice; canFlip: boolean }>();
+const props = defineProps<{
+  indice: Indice;
+  canFlip: boolean;
+  index: number;
+}>();
 const isFlipped = ref(props.indice.flipped);
 
 async function flipCard() {

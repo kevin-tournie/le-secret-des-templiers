@@ -35,13 +35,13 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import { formattedTime, timer } from "~/store/timer";
+import { formattedTime, maxTimer, timer } from "~/store/timer";
 
 definePageMeta({
   middleware: "auth",
 });
 
-const totalTime = 3600; // 1 hour in seconds
+const totalTime = maxTimer; // 1 hour in seconds
 const circumference = 2 * Math.PI * 90; // 2 * PI * radius
 
 const strokeDashoffset = computed(() => {

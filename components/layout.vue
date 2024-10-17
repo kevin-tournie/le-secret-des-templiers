@@ -11,9 +11,9 @@
 </template>
 
 <script setup lang="ts">
-import { formattedTime, timer } from "~/store/timer";
+import { formattedTime, maxTimer, timer } from "~/store/timer";
 
-const totalTime = 3600; // 1 hour in seconds
+const totalTime = maxTimer; // 1 hour in seconds
 const intervalId = ref<NodeJS.Timeout>();
 
 const route = useRoute();

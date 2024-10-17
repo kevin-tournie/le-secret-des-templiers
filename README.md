@@ -32,17 +32,17 @@ Locally preview production build:
 npm run preview
 ```
 
-To run the production bundle:
+To run the production bundle you need to specify those environnement variables:
 
 ```bash
-LOG_LEVEL="error" ENV="production"
+LOG_LEVEL="error" ENV="production" DATABASE_URL="your_database_url"
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
 
 ## Execute migration
 
-This project uses SQLite as database engine.
+This project uses Posgresql as database engine and drizzle as an ORM and migrations manager.
 To generate the migrations, run :
 
 ```bash
@@ -52,5 +52,5 @@ npx drizzle-kit generate
 Then, to run the migrations :
 
 ```bash
-npx tsx server/database/migrate.ts
+npx drizzle-kit migrage
 ```

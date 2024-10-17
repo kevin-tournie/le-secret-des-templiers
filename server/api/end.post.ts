@@ -2,8 +2,9 @@ import logger from "../libs/pino";
 import { db } from "../database/db";
 import { teams } from "../database/schema";
 import { eq } from "drizzle-orm";
-import { computeMalus } from "../utils/malus-utils";
+import { computeMalusPoints, computeScorePoints } from "../utils/score-utils";
 import { formatTimer } from "../utils/time-utils";
+import { maxTimer } from "../constants/score-constants";
 
 type Payload = {
   timer: number,
@@ -15,18 +16,22 @@ export default defineEventHandler(async (event) => {
 
     const { user } = await getUserSession(event);
 
-    const totalMalusPoints = computeMalus(payload.malus);
-    const formattedTime = formatTimer(payload.timer);
+    const timeElapsed = maxTimer - payload.timer;
 
-    logger.info(`L'équipe ${user?.team} a terminé la partie avec un temps de ${formattedTime} et un malus de ${totalMalusPoints} points`)
+    const totalMalusPoints = computeMalusPoints(payload.malus);
+    const formattedTime = formatTimer(timeElapsed);
+    const score = computeScorePoints(payload.malus, timeElapsed);
+
+    logger.info(`Team ${user?.team} finished the game | Time: ${formattedTime},  Malus : ${totalMalusPoints}, Total Points: ${score}`)
 
     const session = await requireUserSession(event);
 
     await db
       .update(teams)
       .set({
-        time: 3600 - payload.timer, 
-        malus_points: totalMalusPoints
+        time: timeElapsed, 
+        malus_points: totalMalusPoints,
+        score
       })
       .where(eq(teams.name, session.user.team))
 

@@ -4,6 +4,7 @@
       <FlippableCard
         v-for="(indice, index) in indices"
         :key="indice.id"
+        :index="index"
         :indice="indice"
         :canFlip="canFlip(index)"
       />
