@@ -14,7 +14,7 @@ type Payload = {
 export default defineEventHandler(async (event) => {
     const payload = await readBody<Payload>(event);
 
-    const { user } = await getUserSession(event);
+    const session = await requireUserSession(event);
 
     const timeElapsed = maxTimer - payload.timer;
 
@@ -22,9 +22,7 @@ export default defineEventHandler(async (event) => {
     const formattedTime = formatTimer(timeElapsed);
     const score = computeScorePoints(payload.malus, timeElapsed);
 
-    logger.info(`Team ${user?.team} finished the game | Time: ${formattedTime},  Malus : ${totalMalusPoints}, Total Points: ${score}`)
-
-    const session = await requireUserSession(event);
+    logger.info(`Team ${session.user?.team} finished the game | Time: ${formattedTime},  Malus : ${totalMalusPoints}, Total Points: ${score}`)
 
     await db
       .update(teams)
@@ -35,6 +33,6 @@ export default defineEventHandler(async (event) => {
       })
       .where(eq(teams.name, session.user.team))
 
-    return new Response("ok");
+    return score;
   });
   

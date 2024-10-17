@@ -46,5 +46,5 @@ export function computeTimePoints(timer: number): number {
 }
 
 export function computeScorePoints(malus: Record<number, boolean>, timer: number): number {
-    return computeMalusPoints(malus) + computeTimePoints(timer);
+    return computeTimePoints(timer) - computeMalusPoints(malus);
 }
