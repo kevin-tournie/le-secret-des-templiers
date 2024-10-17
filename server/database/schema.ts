@@ -1,7 +1,7 @@
 import { sql, type InferSelectModel } from "drizzle-orm";
-import { text, integer, sqliteTable } from "drizzle-orm/sqlite-core";
+import { integer, pgTable, text } from "drizzle-orm/pg-core";
 
-export const teams = sqliteTable("teams", {
+export const teams = pgTable('teams', {
   id: integer("id").primaryKey(),
   name: text("name").notNull().unique(),
   company: text("company"),

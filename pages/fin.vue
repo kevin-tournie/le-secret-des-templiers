@@ -1,6 +1,8 @@
 <template>
   <div>Fin de partie</div>
-  <UButton @click="navigateTo('/accueil')">Tableau des scores</UButton>
+  <UButton @click="navigateTo('/accueil')">Tableau global des scores</UButton>
+  <UButton @click="navigateTo('/accueil')">Tableau global des scores</UButton>
+  <UButton @click="navigateTo('/accueil')">Revenir à l'accueil</UButton>
 </template>
 
 <script setup lang="ts">

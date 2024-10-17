@@ -23,6 +23,7 @@ logs
 .env.*
 !.env.example
 
+# Database
 server/database/drizzle
-
-sqlite.db
+postgres
+drizzle
