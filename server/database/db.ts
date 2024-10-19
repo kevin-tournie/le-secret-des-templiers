@@ -1,3 +1,5 @@
 import { drizzle } from 'drizzle-orm/postgres-js';
 
-export const db = drizzle(process.env.DATABASE_URL!);
+const { databaseUrl } = useRuntimeConfig();
+
+export const db = drizzle(databaseUrl);

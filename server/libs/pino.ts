@@ -1,10 +1,11 @@
 import pino, { Logger } from "pino";
 
-var logger: Logger;
-
+let logger: Logger;
+const { logLevel } = useRuntimeConfig();
+ 
 if (process.env.NODE_ENV === "production") {
   logger = pino({
-    level: process.env.LOG_LEVEL,
+    level: logLevel,
   });
 } else {
   logger = pino({
