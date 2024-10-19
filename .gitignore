@@ -26,4 +26,3 @@ logs
 # Database
 server/database/drizzle
 postgres
-drizzle
