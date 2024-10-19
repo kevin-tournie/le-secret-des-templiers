@@ -52,5 +52,5 @@ npx drizzle-kit generate
 Then, to run the migrations :
 
 ```bash
-npx drizzle-kit migrage
+npx drizzle-kit migrate
 ```
