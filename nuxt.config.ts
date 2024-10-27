@@ -22,7 +22,7 @@ export default defineNuxtConfig({
       redirect: "/accueil",
     },
   },
-  css: ['~/styles/main.css'],
+  css: ['~/assets/main.css'],
   ssr: false,
   vite: {
     css: {
