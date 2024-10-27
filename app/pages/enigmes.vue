@@ -17,6 +17,7 @@
 import { ref, onMounted } from "vue";
 import FlippableCard from "~/components/FlippableCard.vue";
 import type { Enigme, Indice } from "~/components/types/enigme";
+import jsonEnigmes from "~/assets/json/enigmes.json";
 
 definePageMeta({
   middleware: "auth",
@@ -27,7 +28,6 @@ const indices = ref<Indice[]>([]);
 const route = useRoute();
 
 onMounted(async () => {
-  const jsonEnigmes = await queryContent("/enigmes").findOne();
   const enigmes = jsonEnigmes.body as unknown as Enigme[];
 
   const enigme = enigmes.find(
@@ -58,7 +58,7 @@ function isCardFlipped(malus: string | null, id: number) {
 
 function canFlip(index: number) {
   if (index === 0) return true;
-  return indices.value[index - 1].flipped;
+  return indices.value[index - 1]?.flipped || false;
 }
 </script>
 

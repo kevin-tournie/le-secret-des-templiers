@@ -1,7 +1,7 @@
 <template>
   <div class="vertical-container container">
-    <span class="question-title">{{ question.question }}</span>
-    <div v-for="answer in question.answers" class="answer-container">
+    <span class="question-title">{{ question?.question }}</span>
+    <div v-for="answer in question?.answers" class="answer-container">
       <button
         :class="{
           buttonClicked: userAnswer === answer.id,
@@ -28,12 +28,12 @@
 
 <script setup lang="ts">
 import type { Question } from "~/components/types/qcm";
+import jsonQuestions from "~/assets/json/qcm.json";
 
 definePageMeta({
   middleware: "auth",
 });
 
-const jsonQuestions = await queryContent("/qcm").findOne();
 const questions = jsonQuestions.body as unknown as Question[];
 
 const userAnswer = ref(0);
