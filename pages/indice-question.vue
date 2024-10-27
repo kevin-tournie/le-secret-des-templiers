@@ -3,12 +3,12 @@
     <div class="question-container">
       <p>Quel dernier templier avez-vous rencontré ?</p>
       <form @submit.prevent="handleClick">
-        <UInput
+        <input
           type="text"
           v-model="templierName"
           placeholder="Entrez le nom du templier"
         />
-        <UButton type="submit">Valider</UButton>
+        <button type="submit">Valider</button>
         <NuxtLink to="/jeu">Retour</NuxtLink>
       </form>
     </div>

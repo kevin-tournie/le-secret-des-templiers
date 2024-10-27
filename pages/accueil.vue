@@ -1,58 +1,36 @@
 <template>
-  <div class="flex justify-center items-center min-h-screen bg-gray-100">
-    <div class="bg-white shadow-lg rounded-lg p-6 w-full max-w-md">
-      <h1 class="text-xl font-bold mb-4 text-center">
-        Le secret des Templiers
-      </h1>
-      <UForm
-        :schema="createTeamSchema"
-        :state="state"
-        class="flex flex-col mb-4 gap-5"
-        @submit="onSubmit"
-      >
-        <UFormGroup label="Nom d'équipe" name="teamName">
-          <UInput
-            v-model="state.teamName"
-            size="sm"
-            class="w-full border-gray-300 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 rounded-md shadow-sm"
-          >
-          </UInput>
-        </UFormGroup>
+  <div class="vertical-container">
+    <form @submit="onSubmit" class="container-form">
+      <div class="container-group-form">
+        <label for="team" class="label-form">Nom d'équipe</label>
+        <input name="team" v-model="form.teamName" class="input-form" />
+      </div>
 
-        <UFormGroup label="Nom de l'entreprise (Facultatif)" name="companyName">
-          <UInput
-            v-model="state.companyName"
-            size="sm"
-            class="w-full border-gray-300 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 rounded-md shadow-sm"
-          >
-          </UInput>
-        </UFormGroup>
-        <UButton
-          type="submit"
-          class="w-full text-white font-bold py-2 px-4 rounded text-center"
-          >Jouer
-        </UButton>
-      </UForm>
-    </div>
+      <div class="container-group-form">
+        <label for="company" class="label-form"
+          >Nom d'entreprise (facultatif)</label
+        >
+        <input name="company" v-model="form.companyName" class="input-form" />
+      </div>
+      <button type="submit" class="button-form">Jouer</button>
+    </form>
   </div>
 </template>
 
 <script setup lang="ts">
-import type { FormSubmitEvent } from "#ui/types";
-import type { CreateTeamForm } from "~/composables/useCreateTeam";
-
 const { fetch } = useUserSession();
 
-const state = reactive({
+const form = reactive({
   teamName: "",
   companyName: "",
 });
 
-async function onSubmit(event: FormSubmitEvent<CreateTeamForm>) {
-  console.log("coucou");
+async function onSubmit(event: any) {
+  event.preventDefault();
+  console.log(event);
   await useCreateTeam({
-    teamName: event.data.teamName,
-    companyName: event.data.companyName,
+    teamName: form.teamName,
+    companyName: form.companyName,
   });
 
   await fetch(); // permet de récupérer le cookie de session !!
@@ -60,3 +38,55 @@ async function onSubmit(event: FormSubmitEvent<CreateTeamForm>) {
   await navigateTo("/qcm");
 }
 </script>
+
+<style lang="scss" scoped>
+.container-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: calc(100vh - 600px);
+  gap: 10px;
+}
+
+.container-group-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.label-form {
+  color: var(--secondary-color);
+  font-family: "Cinzel", sans-serif;
+  font-weight: 600;
+}
+
+.input-form {
+  font-family: "Cinzel", sans-serif;
+  border: 2px solid;
+  border-color: white;
+  outline: none;
+  transition: border-color 0.2s;
+
+  &:focus {
+    border-color: var(--secondary-color);
+  }
+}
+
+.button-form {
+  margin-top: 20px;
+  height: 50px;
+  width: 100px;
+  align-self: center;
+  background-color: var(--secondary-color);
+  border: white;
+
+  font-size: large;
+  font-family: "Cinzel", sans-serif;
+  color: white;
+  box-shadow: 0 4px 20px rgba(176, 146, 72, 0.5);
+
+  &:active {
+    box-shadow: 0 2px 10px rgba(176, 146, 72, 0.7);
+  }
+}
+</style>

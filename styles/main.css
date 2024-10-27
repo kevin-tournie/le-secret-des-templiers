@@ -1,0 +1,24 @@
+:root {
+    --primary-color: #00585C;
+    --secondary-color: #B09248;
+}
+
+body {
+    margin: 0px;
+    background-color: var(--primary-color);
+}
+
+@font-face {
+    font-family: 'Cinzel';
+    src: url('/fonts/Cinzel-VariableFont_wght.ttf') format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+.vertical-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

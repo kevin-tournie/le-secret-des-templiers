@@ -1,5 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  future: {
+    compatibilityVersion: 4
+  },
   devtools: { 
     enabled: true 
   },
@@ -10,7 +13,6 @@ export default defineNuxtConfig({
   },
   compatibilityDate: "2024-07-04",
   modules: [
-    "@nuxt/ui", 
     "nuxt-auth-utils", 
     "@nuxt/content", 
     "@nuxt/image", 
@@ -20,5 +22,15 @@ export default defineNuxtConfig({
       redirect: "/accueil",
     },
   },
+  css: ['~/styles/main.css'],
   ssr: false,
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          api: 'modern-compiler'
+        }
+      }
+    }
+  }
 });
