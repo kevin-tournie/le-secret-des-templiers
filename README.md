@@ -42,8 +42,8 @@ Check out the [deployment documentation](https://nuxt.com/docs/getting-started/d
 
 ## Execute migration
 
-This project uses Posgresql as database engine and drizzle as an ORM and migrations manager.
-To generate the migrations, run :
+This project uses Postgresql as database engine and drizzle as an ORM and migrations manager.
+To generate a migration, run :
 
 ```bash
 npx drizzle-kit generate

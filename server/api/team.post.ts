@@ -10,10 +10,10 @@ export default defineEventHandler(async (event) => {
   const result = createTeamSchema.safeParse(body);
 
   if (!result.success) {
-    return {
-      status: 400,
-      body: result.error,
-    };
+    throw createError({
+      statusCode: 400,
+      statusMessage: result.error.errors[0].message,
+    });
   }
 
   const potentialTeam = await db
@@ -31,6 +31,10 @@ export default defineEventHandler(async (event) => {
     logger.info(`Team "${result.data.teamName}" has been created successfully`);
   } else {
     logger.info(`Team ${potentialTeam[0].name} already exists`);
+    throw createError({
+      statusCode: 409,
+      statusMessage: "Team already exists",
+    });
   }
 
   await setUserSession(event, {
