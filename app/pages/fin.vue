@@ -6,25 +6,8 @@
       Revenir à l'accueil
     </button>
 
-    <!-- Premier double tableaux pour les score de l'entreprise -->
+    <!-- Tableau pour les score de l'entreprise -->
     <div>
-      <table v-if="scoreBoard && scoreBoard.topCompanyTeams.length > 0">
-        <thead>
-          <tr>
-            <th>Rang</th>
-            <th>Nom d'équipe</th>
-            <th>Score</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(team, index) in scoreBoard?.topCompanyTeams">
-            <td>{{ index }}</td>
-            <td>{{ team.name }}</td>
-            <td>{{ team.score }}</td>
-          </tr>
-        </tbody>
-      </table>
-
       <table v-if="scoreBoard && scoreBoard.companyTeams.length > 0">
         <thead>
           <tr>
@@ -35,7 +18,7 @@
         </thead>
         <tbody>
           <tr v-for="(team, index) in scoreBoard?.companyTeams">
-            <td>{{ index }}</td>
+            <td>{{ index + 1 }}</td>
             <td>{{ team.name }}</td>
             <td>{{ team.score }}</td>
           </tr>
@@ -43,7 +26,7 @@
       </table>
     </div>
 
-    <!-- Deuxième double tableaux pour les score globaux -->
+    <!-- Tableau pour les score globaux -->
     <div>
       <table>
         <thead>
@@ -54,25 +37,8 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(team, index) in scoreBoard?.topGlobalTeams">
-            <td>{{ index }}</td>
-            <td>{{ team.name }}</td>
-            <td>{{ team.score }}</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Rang</th>
-            <th>Nom d'équipe</th>
-            <th>Score</th>
-          </tr>
-        </thead>
-        <tbody>
           <tr v-for="(team, index) in scoreBoard?.globalTeams">
-            <td>{{ index }}</td>
+            <td>{{ index + 1 }}</td>
             <td>{{ team.name }}</td>
             <td>{{ team.score }}</td>
           </tr>
@@ -91,9 +57,7 @@ type TeamInfo = {
 };
 
 type ScoreBoard = {
-  topCompanyTeams: TeamInfo[];
   companyTeams: TeamInfo[];
-  topGlobalTeams: TeamInfo[];
   globalTeams: TeamInfo[];
 };
 
@@ -120,23 +84,16 @@ onMounted(async () => {
     method: "GET",
   });
 
-  const topCompanyTeams = response.companyTeams.slice(0, 3);
-  const topGlobalTeams = response.globalTeams.slice(0, 3);
-  const followingCompanyTeams = response.companyTeams.splice(0, 3);
-  const followingGlobalTeams = response.globalTeams.splice(0, 3);
-
   scoreBoard.value = {
-    topCompanyTeams,
-    companyTeams: followingCompanyTeams,
-    topGlobalTeams,
-    globalTeams: followingGlobalTeams,
+    companyTeams: response.companyTeams,
+    globalTeams: response.globalTeams,
   };
 
-  // localStorage.removeItem("countdownStartTime");
-  // localStorage.removeItem("countdownTotalTime");
-  // localStorage.removeItem("malus");
+  localStorage.removeItem("countdownStartTime");
+  localStorage.removeItem("countdownTotalTime");
+  localStorage.removeItem("malus");
 
-  // clear();
+  clear();
 });
 </script>
 
@@ -144,6 +101,7 @@ onMounted(async () => {
 table {
   width: 100%;
   border-collapse: collapse;
+  font-family: "Cinzel", sans-serif;
 }
 th,
 td {
@@ -155,7 +113,6 @@ td {
 th {
   background-color: var(--secondary-color);
   color: white;
-  font-family: "Cinzel", sans-serif;
 }
 
 .container {
