@@ -57,7 +57,7 @@ onBeforeUnmount(() => {
   position: fixed;
   bottom: 0;
   width: 100%;
-  background-color: #f8f8f8;
+  background-color: var(--primary-color);
   padding: 10px 0;
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -68,6 +68,11 @@ onBeforeUnmount(() => {
   align-items: center;
   width: 90%;
   margin: 0 auto;
-  font-size: 1.2em;
+  font-size: large;
+  font-family: "Cinzel", sans-serif;
+  font-weight: 700;
+  span {
+    color: var(--secondary-color);
+  }
 }
 </style>

@@ -10,7 +10,10 @@
 
 <style lang="css" scoped>
 .container {
-  margin: 50px;
+  margin: 0 auto;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  max-width: 300px;
   background-color: var(--primary-color);
 }
 

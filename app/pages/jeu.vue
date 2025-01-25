@@ -5,12 +5,23 @@
         <h1>{{ user?.team }}</h1>
         <h2>{{ user?.companyName }}</h2>
       </div>
-      <svg width="200" height="200" viewBox="0 0 200 200">
+      <button class="game-button" @click="() => navigateTo('/indice-question')">
+        Indice
+      </button>
+      <button class="game-button" @click="() => navigateTo('/fin')">
+        Fin de la partie
+      </button>
+      <svg
+        width="200"
+        height="200"
+        viewBox="0 0 200 200"
+        style="margin-top: 40px"
+      >
         <circle
           cx="100"
           cy="100"
           r="90"
-          stroke="#e6e6e6"
+          stroke="#00585C"
           stroke-width="10"
           fill="none"
         />
@@ -18,7 +29,7 @@
           cx="100"
           cy="100"
           r="90"
-          stroke="#3498db"
+          stroke="#B09248"
           stroke-width="10"
           fill="none"
           :stroke-dasharray="circumference"
@@ -27,8 +38,6 @@
         />
       </svg>
       <div class="time-display">{{ formattedTime }}</div>
-      <NuxtLink to="/indice-question">Indice</NuxtLink>
-      <NuxtLink to="/fin">Fin de la partie</NuxtLink>
     </div>
   </Layout>
 </template>
@@ -57,7 +66,8 @@ const { user } = useUserSession();
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  position: relative;
+  gap: 20px;
 }
 
 .header {
@@ -67,19 +77,26 @@ const { user } = useUserSession();
 
 .header h1 {
   margin: 0;
-  font-size: 2em;
+  font-family: "Cinzel", sans-serif;
+  font-weight: 600;
+  color: #dfd3b5;
 }
 
 .header h2 {
   margin: 0;
-  font-size: 1.5em;
-  color: #555;
+  font-family: "Cinzel", sans-serif;
+  font-weight: 400;
+  color: #dfd3b5;
 }
 
 .time-display {
   font-size: 2em;
   font-weight: bold;
   text-align: center;
+  color: #dfd3b5;
   margin-top: 20px;
+  font-family: "Cinzel", sans-serif;
+  position: absolute;
+  bottom: 17%;
 }
 </style>

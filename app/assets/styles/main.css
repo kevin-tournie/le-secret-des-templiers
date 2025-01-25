@@ -16,9 +16,29 @@ body {
     font-display: swap;
 }
 
+@font-face {
+    font-family: 'Tempus';
+    src: url('/fonts/Tempus.ttf') format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 .vertical-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
+.game-button {
+    width: 150px;
+    align-self: center;
+    background-color: var(--secondary-color);
+    border: 1px solid;
+  
+    font-size: medium;
+    font-family: "Cinzel", sans-serif;
+    color: white;
+    box-shadow: 0 4px 20px rgba(176, 146, 72, 0.5);
+  }

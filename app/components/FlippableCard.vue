@@ -1,8 +1,11 @@
 <template>
   <div class="card" @click="flipCard">
-    <div class="card-inner" :class="{ flipped: isFlipped }">
+    <div
+      class="card-inner"
+      :class="{ flipped: isFlipped, expanded: isFlipped }"
+    >
       <div class="card-front">
-        {{ indice.id % 3 === 0 ? "Solution" : `Indice ${indice.id}` }}
+        {{ createCardTitle() }}
       </div>
       <div class="card-back">
         {{ indice.value }}
@@ -13,7 +16,14 @@
 
 <script setup lang="ts">
 import { ref, watch } from "vue";
-import type { Indice } from "~/components/types/enigme";
+import type { Indice, IndiceType } from "~/components/types/enigme";
+
+const titlesMapper: Record<IndiceType, string> = {
+  indice_lieu: "Indice lieu",
+  solution_lieu: "Solution lieu",
+  indice_enigme: "Indice enigme",
+  solution_enigme: "Solution enigme",
+};
 
 const props = defineProps<{
   indice: Indice;
@@ -21,6 +31,10 @@ const props = defineProps<{
   index: number;
 }>();
 const isFlipped = ref(props.indice.flipped);
+
+function createCardTitle() {
+  return titlesMapper[props.indice.type as IndiceType];
+}
 
 async function flipCard() {
   if (props.canFlip && !isFlipped.value) {
@@ -49,19 +63,20 @@ watch(isFlipped, (newVal) => {
 
 <style scoped lang="css">
 .card {
-  width: 200px;
-  height: 250px;
+  width: 80%;
   perspective: 1000px;
-  cursor: pointer;
-  margin-bottom: 20px;
 }
 
 .card-inner {
-  width: 100%;
-  height: 100%;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
   position: relative;
+  width: 100%;
+  height: 40px;
+  transition: transform 0.6s, height 0.6s;
+  transform-style: preserve-3d;
+}
+
+.card-inner.expanded {
+  height: 160px;
 }
 
 .card-inner.flipped {
@@ -70,29 +85,30 @@ watch(isFlipped, (newVal) => {
 
 .card-front,
 .card-back {
+  position: absolute;
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
-  position: absolute;
-  top: 0;
-  left: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.5em;
-  padding: 20px;
+  text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
+
+  background-color: #f8f8f8;
+
+  font-family: "Tempus", sans-serif;
+  font-size: 1.5em;
+  font-weight: 600;
+  color: var(--secondary-color);
 }
 
 .card-front {
-  background-color: #3498db;
-  color: white;
+  font-size: 1.4em;
 }
 
 .card-back {
-  background-color: #f8f8f8;
-  color: black;
   transform: rotateY(180deg);
 }
 </style>

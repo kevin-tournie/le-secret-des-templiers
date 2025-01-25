@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="flex justify-center items-center flex-col min-h-screen bg-gray-100"
-  >
+  <div class="container">
     <iframe
       width="350"
       height="200"
@@ -12,10 +10,12 @@
       referrerpolicy="strict-origin-when-cross-origin"
       allowfullscreen
     ></iframe>
-    <UButton>
-      <NuxtLink to="/jeu">Continuer</NuxtLink>
-    </UButton>
-    Le compte à rebours débutera après avoir appuyer sur le bouton
+    <button class="ready-button" @click="() => navigateTo('/jeu')">
+      Continuer
+    </button>
+    <span class="italic-text"
+      >Le compte à rebours débutera après avoir appuyer sur le bouton</span
+    >
   </div>
 </template>
 
@@ -24,3 +24,35 @@ definePageMeta({
   middleware: "auth",
 });
 </script>
+
+<style lang="css" scoped>
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  background-color: var(--primary-color);
+}
+
+.italic-text {
+  font-style: italic;
+  color: var(--secondary-color);
+}
+.ready-button {
+  margin-top: 20px;
+  height: 40px;
+  width: 150px;
+  align-self: center;
+  background-color: var(--secondary-color);
+  border: 1px solid;
+
+  font-size: medium;
+  font-family: "Cinzel", sans-serif;
+  color: white;
+  box-shadow: 0 4px 20px rgba(176, 146, 72, 0.5);
+}
+</style>

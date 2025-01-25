@@ -1,14 +1,16 @@
 <template>
   <Layout>
-    <div class="indices-container">
-      <FlippableCard
-        v-for="(indice, index) in indices"
-        :key="indice.id"
-        :index="index"
-        :indice="indice"
-        :canFlip="canFlip(index)"
-      />
-      <NuxtLink to="jeu">Retour</NuxtLink>
+    <div class="page-container">
+      <div class="indices-container">
+        <FlippableCard
+          v-for="(indice, index) in indices"
+          :key="indice.id"
+          :index="index"
+          :indice="indice"
+          :canFlip="canFlip(index)"
+        />
+        <button class="game-button" @click="handleClick">Retour</button>
+      </div>
     </div>
   </Layout>
 </template>
@@ -60,14 +62,26 @@ function canFlip(index: number) {
   if (index === 0) return true;
   return indices.value[index - 1]?.flipped || false;
 }
+
+async function handleClick() {
+  await navigateTo("/jeu");
+}
 </script>
 
 <style scoped lang="css">
+.page-container {
+  height: 100%;
+  margin-bottom: 70px;
+  display: flex;
+  flex-direction: column;
+}
+
 .indices-container {
-  max-height: 90dvh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 15px;
+  overflow-y: auto;
 }
 </style>

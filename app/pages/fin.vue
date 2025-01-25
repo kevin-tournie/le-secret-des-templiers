@@ -1,15 +1,17 @@
 <template>
-  <div>
-    <h1>Fin de partie</h1>
-    <span>Votre score est de {{ score }}</span>
-    <UButton @click="navigateTo('/accueil')">Revenir à l'accueil</UButton>
+  <div class="container">
+    <h1 class="title">Fin de partie</h1>
+    <span class="score">Votre score est de {{ score }}</span>
+    <button class="game-button" @click="navigateTo('/accueil')">
+      Revenir à l'accueil
+    </button>
 
     <!-- Premier double tableaux pour les score de l'entreprise -->
     <div>
-      <table>
+      <table v-if="scoreBoard && scoreBoard.topCompanyTeams.length > 0">
         <thead>
           <tr>
-            <th>#</th>
+            <th>Rang</th>
             <th>Nom d'équipe</th>
             <th>Score</th>
           </tr>
@@ -23,10 +25,10 @@
         </tbody>
       </table>
 
-      <table>
+      <table v-if="scoreBoard && scoreBoard.companyTeams.length > 0">
         <thead>
           <tr>
-            <th>#</th>
+            <th>Rang</th>
             <th>Nom d'équipe</th>
             <th>Score</th>
           </tr>
@@ -46,7 +48,7 @@
       <table>
         <thead>
           <tr>
-            <th>#</th>
+            <th>Rang</th>
             <th>Nom d'équipe</th>
             <th>Score</th>
           </tr>
@@ -63,7 +65,7 @@
       <table>
         <thead>
           <tr>
-            <th>#</th>
+            <th>Rang</th>
             <th>Nom d'équipe</th>
             <th>Score</th>
           </tr>
@@ -130,11 +132,11 @@ onMounted(async () => {
     globalTeams: followingGlobalTeams,
   };
 
-  localStorage.removeItem("countdownStartTime");
-  localStorage.removeItem("countdownTotalTime");
-  localStorage.removeItem("malus");
+  // localStorage.removeItem("countdownStartTime");
+  // localStorage.removeItem("countdownTotalTime");
+  // localStorage.removeItem("malus");
 
-  clear();
+  // clear();
 });
 </script>
 
@@ -148,8 +150,30 @@ td {
   border: 1px solid #ddd;
   padding: 8px;
   text-align: left;
+  color: white;
 }
 th {
-  background-color: #f2f2f2;
+  background-color: var(--secondary-color);
+  color: white;
+  font-family: "Cinzel", sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.title {
+  margin-bottom: 5px;
+  font-family: "Cinzel", sans-serif;
+  color: var(--secondary-color);
+}
+
+.score {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  color: #dfd3b5;
 }
 </style>

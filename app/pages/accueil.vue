@@ -27,7 +27,6 @@ const form = reactive({
 
 async function onSubmit(event: any) {
   event.preventDefault();
-  console.log(event);
   await useCreateTeam({
     teamName: form.teamName,
     companyName: form.companyName,

@@ -5,49 +5,48 @@
       "indices": [
         {
           "id": 1,
-          "value": "Regarder les objets sous tous les angles"
+          "type": "indice_lieu",
+          "value": "L’étendard de la Joyeuse se dresse avec fierté dans la demeure"
         },
         {
           "id": 2,
-          "value": "Utiliser l'intelligence artificielle pour résoudre les énigmes"
+          "type": "solution_lieu",
+          "value": "L’étendard est resté depuis tous ces siècles dans le grand escalier menant à l’étage"
         },
         {
           "id": 3,
-          "value": "Chercher des indices au-dessus de 1m80"
+          "type": "indice_enigme",
+          "value": "Une fois à genoux, ne notez-vous pas que quelques notes dénotent ?"
+        },
+        {
+          "id": 4,
+          "type": "solution_enigme",
+          "value": "Les notes de musique sont inscrites sur le tapis de l’escalier"
         }
       ]
     },
     {
-      "templier": "blabla",
+      "templier": "Hugues",
       "indices": [
         {
-          "id": 4,
-          "value": "Regarder les objets sous tous les angles"
-        },
-        {
           "id": 5,
-          "value": "Utiliser l'intelligence artificielle pour résoudre les énigmes"
+          "type": "indice_lieu",
+          "value": "L’étendard de la Joyeuse se dresse avec fierté dans la demeure"
         },
         {
           "id": 6,
-          "value": "Chercher des indices au-dessus de 1m80"
-        }
-      ]
-    },
-    {
-      "templier": "blibli",
-      "indices": [
+          "type": "solution_lieu",
+          "value": "L’étendard est resté depuis tous ces siècles dans le grand escalier menant à l’étage"
+        },
         {
           "id": 7,
-          "value": "Regarder les objets sous tous les angles"
+          "type": "indice_enigme",
+          "value": "Une fois à genoux, ne notez-vous pas que quelques notes dénotent ?"
         },
         {
           "id": 8,
-          "value": "Utiliser l'intelligence artificielle pour résoudre les énigmes"
-        },
-        {
-          "id": 9,
-          "value": "Chercher des indices au-dessus de 1m80"
+          "type": "solution_enigme",
+          "value": "Les notes de musique sont inscrites sur le tapis de l’escalier"
         }
       ]
     }

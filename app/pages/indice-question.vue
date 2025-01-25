@@ -1,15 +1,15 @@
 <template>
   <Layout>
     <div class="question-container">
-      <p>Quel dernier templier avez-vous rencontré ?</p>
+      <p>Comment s'appelait le dernier templier que avez-vous rencontré ?</p>
       <form @submit.prevent="handleClick">
         <input
           type="text"
           v-model="templierName"
           placeholder="Entrez le nom du templier"
         />
-        <button type="submit">Valider</button>
-        <NuxtLink to="/jeu">Retour</NuxtLink>
+        <button class="game-button" type="submit">Valider</button>
+        <button class="game-button" @click="handleReturnClick">Retour</button>
       </form>
     </div>
   </Layout>
@@ -30,6 +30,10 @@ async function handleClick() {
     query: { templier: templierName.value },
   });
 }
+
+async function handleReturnClick() {
+  await navigateTo("/jeu");
+}
 </script>
 
 <style scoped>
@@ -37,7 +41,7 @@ async function handleClick() {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  margin: 20px;
   height: 80vh;
   margin-top: 50px;
 }
@@ -46,6 +50,16 @@ async function handleClick() {
   font-size: 1.5em;
   margin-bottom: 20px;
   text-align: center;
+  color: #dfd3b5;
+  font-family: "Cinzel", sans-serif;
+  font-weight: 600;
+}
+
+.question-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 }
 
 .question-container input {
@@ -53,6 +67,9 @@ async function handleClick() {
   font-size: 1em;
   border: 1px solid #ccc;
   border-radius: 5px;
+  margin: 0 10px;
   width: 300px;
+
+  font-family: "Tempus", sans-serif;
 }
 </style>
