@@ -7,8 +7,9 @@
     </button>
 
     <!-- Tableau pour les score de l'entreprise -->
-    <div>
-      <table v-if="scoreBoard && scoreBoard.companyTeams.length > 0">
+    <div v-if="scoreBoard && scoreBoard.companyTeams.length > 0">
+      <h2 class="sub-title">Classement de votre entreprise</h2>
+      <table>
         <thead>
           <tr>
             <th>Rang</th>
@@ -28,6 +29,7 @@
 
     <!-- Tableau pour les score globaux -->
     <div>
+      <h2 class="sub-title">Classement global</h2>
       <table>
         <thead>
           <tr>
@@ -89,17 +91,17 @@ onMounted(async () => {
     globalTeams: response.globalTeams,
   };
 
-  localStorage.removeItem("countdownStartTime");
-  localStorage.removeItem("countdownTotalTime");
-  localStorage.removeItem("malus");
+  // localStorage.removeItem("countdownStartTime");
+  // localStorage.removeItem("countdownTotalTime");
+  // localStorage.removeItem("malus");
 
-  clear();
+  // clear();
 });
 </script>
 
 <style lang="css" scoped>
 table {
-  width: 100%;
+  width: 360px;
   border-collapse: collapse;
   font-family: "Cinzel", sans-serif;
 }
@@ -119,7 +121,8 @@ th {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
+  margin-bottom: 40px;
 }
 
 .title {
@@ -130,6 +133,10 @@ th {
 
 .score {
   margin-bottom: 20px;
+  font-size: 1.5rem;
+  color: #dfd3b5;
+}
+.sub-title {
   font-size: 1.5rem;
   color: #dfd3b5;
 }

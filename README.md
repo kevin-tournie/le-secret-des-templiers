@@ -54,3 +54,9 @@ Then, to run the migrations :
 ```bash
 npx drizzle-kit migrate
 ```
+
+To run the seed script :
+
+```bash
+DATABASE_URL="postgresql://username:password@hostname:port/database" npx tsx server/database/seeder.ts
+```

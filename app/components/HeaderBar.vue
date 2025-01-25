@@ -10,6 +10,8 @@
 
 <style lang="css" scoped>
 .container {
+  display: flex;
+  justify-content: center;
   margin: 0 auto;
   margin-top: 40px;
   margin-bottom: 40px;
@@ -19,7 +21,7 @@
 
 .headerbar-image {
   object-fit: contain;
-  width: 100%;
-  height: 100%;
+  width: 60%;
+  height: 60%;
 }
 </style>

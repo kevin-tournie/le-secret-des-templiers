@@ -24,7 +24,7 @@ export default defineEventHandler(async (event) => {
     };
 
     if (company) {
-        scoreBoard.globalTeams = await db
+        scoreBoard.companyTeams = await db
         .select({
             score: teams.score,
             name: teams.name
