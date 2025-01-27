@@ -111,8 +111,8 @@ async function onSubmit(event: any) {
   }
 }
 .error {
-  color: #b05e48;
-  font-family: "Cinzel", sans-serif;
+  color: #c55047;
+  font-family: "Tempus", sans-serif;
   font-weight: 600;
 }
 </style>
