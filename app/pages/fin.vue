@@ -91,11 +91,11 @@ onMounted(async () => {
     globalTeams: response.globalTeams,
   };
 
-  // localStorage.removeItem("countdownStartTime");
-  // localStorage.removeItem("countdownTotalTime");
-  // localStorage.removeItem("malus");
+  localStorage.removeItem("countdownStartTime");
+  localStorage.removeItem("countdownTotalTime");
+  localStorage.removeItem("malus");
 
-  // clear();
+  clear();
 });
 </script>
 

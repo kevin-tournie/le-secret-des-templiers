@@ -13,9 +13,9 @@
     "test": "vitest"
   },
   "dependencies": {
-    "drizzle-orm": "^0.38.4",
-    "nuxt": "^3.15.3",
-    "nuxt-auth-utils": "^0.5.9",
+    "drizzle-orm": "^0.39.1",
+    "nuxt": "^3.15.4",
+    "nuxt-auth-utils": "^0.5.10",
     "pino": "^9.6.0",
     "postgres": "^3.4.5",
     "vue": "latest",
@@ -24,8 +24,8 @@
   "devDependencies": {
     "@nuxt/test-utils": "^3.15.4",
     "@vue/test-utils": "^2.4.6",
-    "drizzle-kit": "^0.30.2",
-    "drizzle-seed": "^0.3.0",
+    "drizzle-kit": "^0.30.4",
+    "drizzle-seed": "^0.3.1",
     "pino-pretty": "^13.0.0",
     "sass-embedded": "^1.83.4",
     "tsx": "^4.19.2",
