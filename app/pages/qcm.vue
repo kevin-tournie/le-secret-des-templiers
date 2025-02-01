@@ -36,13 +36,16 @@ definePageMeta({
 
 const questions = jsonQuestions.body as unknown as Question[];
 
-const userAnswer = ref(0);
+const userAnswer = ref();
 const showAnswers = ref(false);
 const questionNumber = ref(0);
 const question = computed(() => questions[questionNumber.value]);
 
 async function onSubmit(event: any) {
   event.preventDefault();
+  if (!userAnswer.value) {
+    return;
+  }
 
   if (showAnswers.value && questionNumber.value === 3) {
     await navigateTo("/video");
@@ -51,7 +54,7 @@ async function onSubmit(event: any) {
   if (showAnswers.value) {
     showAnswers.value = false;
     questionNumber.value += 1;
-    userAnswer.value = 0;
+    userAnswer.value = null;
   } else {
     showAnswers.value = true;
   }

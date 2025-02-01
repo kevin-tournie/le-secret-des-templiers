@@ -5,7 +5,6 @@ export async function useCreateTeam(createTeamForm: CreateTeamForm) {
     method: "POST",
     body: JSON.stringify(createTeamForm),
   });
-  console.log(response);
 
   return response;
 }

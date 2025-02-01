@@ -54,7 +54,6 @@ function isCardFlipped(malus: string | null, id: number) {
     return false;
   }
   const jsonMalus = JSON.parse(malus);
-  console.log(jsonMalus);
   return jsonMalus[id] ?? false;
 }
 
