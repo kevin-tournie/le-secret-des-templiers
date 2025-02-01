@@ -8,7 +8,7 @@
       <button class="game-button" @click="() => navigateTo('/indice-question')">
         Indice
       </button>
-      <button class="game-button" @click="() => navigateTo('/fin')">
+      <button class="game-button" @click="handleEndgameClick">
         Fin de la partie
       </button>
       <svg
@@ -39,12 +39,18 @@
       </svg>
       <div class="time-display">{{ formattedTime }}</div>
     </div>
+    <EndgameDialogBox
+      v-model:showDialog="showDialog"
+      @update:show-dialog="(value: boolean) => showDialog = value"
+    />
   </Layout>
 </template>
 
 <script setup lang="ts">
 import { computed } from "vue";
 import { formattedTime, maxTimer, timer } from "~/store/timer";
+
+const showDialog = ref(false);
 
 definePageMeta({
   middleware: "auth",
@@ -58,6 +64,10 @@ const strokeDashoffset = computed(() => {
 });
 
 const { user } = useUserSession();
+
+async function handleEndgameClick() {
+  showDialog.value = true;
+}
 </script>
 
 <style scoped>

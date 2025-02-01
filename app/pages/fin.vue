@@ -64,10 +64,21 @@ type ScoreBoard = {
 };
 
 definePageMeta({
-  middleware: "auth",
+  middleware: [
+    "auth",
+    function (_, from) {
+      const { endgamePassword } = useRuntimeConfig();
+
+      if (
+        endgamePassword !== from.query.endgame_password ||
+        from.name != "jeu"
+      ) {
+        return navigateTo("/accueil");
+      }
+    },
+  ],
 });
 const { clear } = useUserSession();
-
 const score = ref<number>();
 const scoreBoard = ref<ScoreBoard>();
 
