@@ -1,7 +1,10 @@
 import { sql, type InferSelectModel } from "drizzle-orm";
 import { integer, pgTable, serial, text } from "drizzle-orm/pg-core";
 
-export const teams = pgTable('teams', {
+// Par défaut, drizzle crée également un schema "drizzle" dans la base de données
+// et crée une table "drizzle_migrations" pour suivre les migrations
+
+export const teams = pgTable("teams", {
   id: serial("id").primaryKey(),
   name: text("name").notNull().unique(),
   company: text("company"),
