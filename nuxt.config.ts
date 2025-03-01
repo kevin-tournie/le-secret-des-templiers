@@ -20,13 +20,4 @@ export default defineNuxtConfig({
   },
   css: ["~/assets/styles/main.css"],
   ssr: false,
-  vite: {
-    css: {
-      preprocessorOptions: {
-        scss: {
-          api: "modern-compiler",
-        },
-      },
-    },
-  },
 });
