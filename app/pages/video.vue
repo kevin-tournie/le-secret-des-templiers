@@ -10,12 +10,9 @@
       referrerpolicy="strict-origin-when-cross-origin"
       allowfullscreen
     ></iframe>
-    <button class="ready-button" @click="() => navigateTo('/jeu')">
+    <button class="ready-button" @click="() => navigateTo('/qcm')">
       Continuer
     </button>
-    <span class="italic-text"
-      >Le compte à rebours débutera après avoir appuyer sur le bouton</span
-    >
   </div>
 </template>
 

@@ -18,7 +18,7 @@
         >
         <input name="company" v-model="form.companyName" class="input-form" />
       </div>
-      <button type="submit" class="button-form">Jouer</button>
+      <button type="submit" class="game-button">Jouer</button>
     </form>
   </div>
 </template>
@@ -45,7 +45,7 @@ async function onSubmit(event: any) {
 
     await fetch(); // permet de récupérer le cookie de session !!
 
-    await navigateTo("/qcm");
+    await navigateTo("/video");
   } catch (error) {
     if (error instanceof FetchError) {
       if (error.response?.status === 409) {
@@ -67,7 +67,7 @@ async function onSubmit(event: any) {
   justify-content: center;
   align-items: flex-start;
   min-height: calc(100vh - 600px);
-  gap: 10px;
+  gap: 25px;
 }
 
 .container-group-form {
@@ -90,24 +90,6 @@ async function onSubmit(event: any) {
 
   &:focus {
     border-color: var(--secondary-color);
-  }
-}
-
-.button-form {
-  margin-top: 20px;
-  height: 50px;
-  width: 100px;
-  align-self: center;
-  background-color: var(--secondary-color);
-  border: white;
-
-  font-size: large;
-  font-family: "Cinzel", sans-serif;
-  color: white;
-  box-shadow: 0 4px 20px rgba(176, 146, 72, 0.5);
-
-  &:active {
-    box-shadow: 0 2px 10px rgba(176, 146, 72, 0.7);
   }
 }
 .error {

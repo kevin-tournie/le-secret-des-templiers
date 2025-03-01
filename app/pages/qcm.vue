@@ -20,8 +20,14 @@
         }}</span
       >
     </div>
-    <button @click="onSubmit" class="submit-button">
-      {{ showAnswers === true ? "Suivant" : "Valider" }}
+    <button @click="onSubmit" class="game-button">
+      {{
+        showAnswers === true && questionNumber === 3
+          ? "Commencer la partie"
+          : showAnswers === true
+          ? "Suivant"
+          : "Valider"
+      }}
     </button>
   </div>
 </template>
@@ -48,7 +54,7 @@ async function onSubmit(event: any) {
   }
 
   if (showAnswers.value && questionNumber.value === 3) {
-    await navigateTo("/video");
+    await navigateTo("/jeu");
   }
 
   if (showAnswers.value) {
@@ -105,22 +111,5 @@ function toggle(buttonId: number) {
 }
 .isIncorrect {
   color: rgb(221, 25, 25);
-}
-.submit-button {
-  margin-top: 20px;
-  height: 40px;
-  width: 100px;
-  align-self: center;
-  background-color: var(--secondary-color);
-  border: 1px solid;
-
-  font-size: large;
-  font-family: "Cinzel", sans-serif;
-  color: white;
-  box-shadow: 0 4px 20px rgba(176, 146, 72, 0.5);
-
-  &:active {
-    box-shadow: 0 2px 10px rgba(176, 146, 72, 0.7);
-  }
 }
 </style>

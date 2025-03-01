@@ -1,11 +1,14 @@
 :root {
     --primary-color: #00585C;
     --secondary-color: #B09248;
+
 }
 
 body {
     margin: 0px;
     background-color: var(--primary-color);
+    height: 100vh;
+    min-height: 100vh;
 }
 
 @font-face {
@@ -32,12 +35,12 @@ body {
 }
 
 .game-button {
-    width: 150px;
+    padding: 7px 20px;
     align-self: center;
     background-color: var(--secondary-color);
     border: 1px solid;
   
-    font-size: medium;
+    font-size: large;
     font-family: "Cinzel", sans-serif;
     color: white;
     box-shadow: 0 4px 20px rgba(176, 146, 72, 0.5);
