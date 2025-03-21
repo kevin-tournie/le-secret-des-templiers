@@ -1,47 +1,46 @@
 :root {
-    --primary-color: #00585C;
-    --secondary-color: #B09248;
-
+  --primary-color: #00585c;
+  --secondary-color: #b09248;
 }
 
 body {
-    margin: 0px;
-    background-color: var(--primary-color);
-    height: 100vh;
-    min-height: 100vh;
+  margin: 0px;
+  background-color: var(--primary-color);
+  height: 100vh;
+  min-height: 100vh;
 }
 
 @font-face {
-    font-family: 'Cinzel';
-    src: url('/fonts/Cinzel-VariableFont_wght.ttf') format("truetype");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Cinzel";
+  src: url("/fonts/Cinzel-VariableFont_wght.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Tempus';
-    src: url('/fonts/Tempus.ttf') format("truetype");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Tempus";
+  src: url("/fonts/Tempus.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 .vertical-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .game-button {
-    padding: 7px 20px;
-    align-self: center;
-    background-color: var(--secondary-color);
-    border: 1px solid;
-  
-    font-size: large;
-    font-family: "Cinzel", sans-serif;
-    color: white;
-    box-shadow: 0 4px 20px rgba(176, 146, 72, 0.5);
-  }
+  padding: 7px 20px;
+  align-self: center;
+  background-color: var(--secondary-color);
+  border: 1px solid;
+
+  font-size: large;
+  font-family: "Cinzel", sans-serif;
+  color: white;
+  box-shadow: 0 4px 20px rgba(176, 146, 72, 0.5);
+}

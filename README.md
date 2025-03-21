@@ -7,7 +7,7 @@ Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introdu
 Make sure to install the dependencies:
 
 ```bash
-npm install
+pnpm install
 ```
 
 ## Development Server
@@ -15,7 +15,7 @@ npm install
 Start the development server on `http://localhost:3000`:
 
 ```bash
-npm run dev
+pnpm run dev
 ```
 
 ## Production
@@ -23,13 +23,19 @@ npm run dev
 Build the application for production:
 
 ```bash
-npm run build
+pnpm run build
 ```
 
 Locally preview production build:
 
 ```bash
-npm run preview
+pnpm run preview
+```
+
+To execute the migrations locally, you can use node > 22.6 with the experimental stripe feature for typescript files:
+
+```bash
+node --experimental-strip-types --env-file=.env bin/migrate_dev.ts
 ```
 
 To run the production bundle you need to specify those environnement variables:
@@ -46,13 +52,19 @@ This project uses Postgresql as database engine and drizzle as an ORM and migrat
 To generate a migration, run :
 
 ```bash
-npx drizzle-kit generate
+pnpm run db:generate
 ```
 
-Then, to run the migrations :
+Then, to run the migrations in a local environnement :
 
 ```bash
-npx drizzle-kit migrate
+pnpm run db:migrate
+```
+
+In production, the migrations are executed during the build of the nuxt app with
+
+```bash
+pnpm run build
 ```
 
 To run the seed script :
